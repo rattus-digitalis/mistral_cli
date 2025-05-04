@@ -1,8 +1,42 @@
-cat << EOF > .gitignore
+# Virtual environment
 .venv/
-__pycache__/
-*.egg-info/
-*.txt
-.env
-EOF
 
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Egg-info and build directories
+*.egg-info/
+dist/
+build/
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Environment files
+.env
+*.env
+
+# Byte-compiled files
+*.pyc
+*.pyo
+
+# IDE files and directories
+.vscode/
+.idea/
+
+# MacOS system files
+.DS_Store
+
+# Temporary files
+tmp/
+*.tmp
+
+# Ignore setup scripts if not needed
+setup.sh
+
+# Specific local files
+treea.txt
