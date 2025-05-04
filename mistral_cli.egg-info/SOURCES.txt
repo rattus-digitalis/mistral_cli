@@ -1,0 +1,15 @@
+README.md
+setup.py
+mistral_cli/__init__.py
+mistral_cli/api.py
+mistral_cli/cli.py
+mistral_cli/config.py
+mistral_cli/main.py
+mistral_cli/prompts.py
+mistral_cli/utils.py
+mistral_cli.egg-info/PKG-INFO
+mistral_cli.egg-info/SOURCES.txt
+mistral_cli.egg-info/dependency_links.txt
+mistral_cli.egg-info/entry_points.txt
+mistral_cli.egg-info/requires.txt
+mistral_cli.egg-info/top_level.txt
