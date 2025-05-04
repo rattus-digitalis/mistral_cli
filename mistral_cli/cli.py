@@ -9,7 +9,6 @@ def main():
     parser.add_argument("-dev", action="store_true", help="Mode développeur.")
     parser.add_argument("-rapide", action="store_true", help="Réponse concise.")
     parser.add_argument("-détail", action="store_true", help="Réponse détaillée.")
-    parser.add_argument("-file", action="store_true", help="Sauvegarde dans un fichier.")
     parser.add_argument("-lang", choices=["python", "bash", "rust"], help="Langage imposé.")
     parser.add_argument("-clip", action="store_true", help="Copie dans le presse-papiers.")
     parser.add_argument("-json", action="store_true", help="Format JSON.")
