@@ -1,21 +1,45 @@
 #!/usr/bin/env bash
 
-# Simple install script for mistral_cli
+# Install script for mistral_cli
+
+set -e
 
 echo "Creating virtual environment..."
-python3 -m venv .venv || { echo "Error creating virtual environment"; exit 1; }
-
+python3 -m venv .venv
 echo "Virtual environment created."
 
 echo "Activating environment..."
-source .venv/bin/activate || { echo "Error activating virtual environment"; exit 1; }
+source .venv/bin/activate
 
 echo "Installing dependencies..."
 pip install --upgrade pip setuptools > /dev/null
-pip install -e . || { echo "Error installing mistral_cli package"; exit 1; }
+pip install -e .
 
+# Create symlink to ~/.local/bin if not already present
+TARGET="$HOME/.local/bin/mistral"
+SOURCE="$(pwd)/.venv/bin/mistral"
+
+if [ ! -f "$SOURCE" ]; then
+    echo "Error: mistral binary not found at $SOURCE"
+    exit 1
+fi
+
+mkdir -p "$HOME/.local/bin"
+
+if [ -L "$TARGET" ] || [ -f "$TARGET" ]; then
+    echo "Removing existing mistral link or file in ~/.local/bin..."
+    rm -f "$TARGET"
+fi
+
+ln -s "$SOURCE" "$TARGET"
+echo "Symlink created: $TARGET -> $SOURCE"
+
+echo
 echo "Installation complete."
 echo
-echo "To start using mistral_cli:"
-echo "  source .venv/bin/activate"
-echo "  mistral -dev \"your prompt here\""
+echo "To use 'mistral' from anywhere, ensure ~/.local/bin is in your PATH."
+echo "You can add this to your ~/.bashrc or ~/.zshrc if needed:"
+echo '  export PATH="$HOME/.local/bin:$PATH"'
+echo
+echo "Now you can run:"
+echo '  mistral -dev "your prompt here"'
