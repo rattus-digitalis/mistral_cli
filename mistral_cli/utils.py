@@ -8,6 +8,24 @@ def save_to_file(filename, content):
     with open(filename, "w") as f:
         f.write(content)
 
+def save_with_collision_handling(base_name: str, content: str, extension: str = ".txt"):
+    # Évite le double .txt si l'utilisateur fournit déjà une extension
+    if base_name.endswith(extension):
+        base_name = base_name[:-len(extension)]
+
+    filename = f"{base_name}{extension}"
+    counter = 1
+
+    # Incrémente jusqu'à ce que le fichier soit unique
+    while os.path.exists(filename):
+        filename = f"{base_name}_{counter}{extension}"
+        counter += 1
+
+    with open(filename, "w") as f:
+        f.write(content)
+
+    print(f"Response saved to: {filename}")
+
 def copy_to_clipboard(text):
     try:
         subprocess.run("xclip", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

@@ -1,0 +1,5 @@
+La commande bash suivante permet d'afficher l'utilisateur connecté actuellement sur le système :
+
+```bash
+whoami
+```
