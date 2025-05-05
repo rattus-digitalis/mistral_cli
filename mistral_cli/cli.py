@@ -10,6 +10,7 @@ def main():
     parser.add_argument("-rapide", action="store_true", help="Réponse concise.")
     parser.add_argument("-détail", action="store_true", help="Réponse détaillée.")
     parser.add_argument("-lang", choices=["python", "bash", "rust"], help="Langage imposé.")
+    parser.add_argument("-file", action="store_true", help="Auto-save response with question-based filename")
     parser.add_argument("-clip", action="store_true", help="Copie dans le presse-papiers.")
     parser.add_argument("-json", action="store_true", help="Format JSON.")
     parser.add_argument("-code", action="store_true", help="Code seulement.")
@@ -23,3 +24,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
